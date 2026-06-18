@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>StockFlow ERP — Coming Soon</title>
+          <meta name="description"
+                    content="StockFlow ERP — Multi-Branch Inventory & Business Management. Under active development.">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+                    rel="stylesheet">
+          <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+          <style>
+                    *,
+                    *::before,
+                    *::after {
+                              margin: 0;
+                              padding: 0;
+                              box-sizing: border-box;
+                    }
+
+                    :root {
+                              --bg: #08080e;
+                              --surface: #0e0e1b;
+                              --border: #1a1a2c;
+                              --text: #d8d8e8;
+                              --muted: #4e4e6a;
+                              --accent: #f0a030;
+                              --green: #2dd4bf;
+                    }
+
+                    html {
+                              font-size: 16px;
+                              -webkit-font-smoothing: antialiased;
+                              -moz-osx-font-smoothing: grayscale;
+                    }
+
+                    body {
+                              font-family: 'Inter', system-ui, -apple-system, sans-serif;
+                              background: var(--bg);
+                              color: var(--text);
+                              min-height: 100vh;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              padding: 3rem 1.5rem;
+                    }
+
+                    /* ── Layout ── */
+                    .page {
+                              width: 100%;
+                              max-width: 480px;
+                              display: flex;
+                              flex-direction: column;
+                              gap: 1.6rem;
+                    }
+
+                    /* ── Shared section label ── */
+                    .sec-label {
+                              display: block;
+                              font-size: 0.63rem;
+                              font-weight: 600;
+                              letter-spacing: 0.08em;
+                              text-transform: uppercase;
+                              color: var(--muted);
+                              margin-bottom: 0.55rem;
+                    }
+
+                    /* ── Status ── */
+                    .status {
+                              display: inline-flex;
+                              align-items: center;
+                              gap: 0.5rem;
+                              font-size: 0.7rem;
+                              font-weight: 600;
+                              letter-spacing: 0.08em;
+                              text-transform: uppercase;
+                              color: var(--muted);
+                              animation: rise 0.4s ease-out both;
+                    }
+
+                    .status-dot {
+                              width: 6px;
+                              height: 6px;
+                              border-radius: 50%;
+                              background: var(--accent);
+                              flex-shrink: 0;
+                              animation: blink 2.4s ease-in-out infinite;
+                    }
+
+                    @keyframes blink {
+
+                              0%,
+                              100% {
+                                        opacity: 1;
+                              }
+
+                              50% {
+                                        opacity: 0.2;
+                              }
+                    }
+
+                    /* ── Brand ── */
+                    .brand {
+                              animation: rise 0.4s 0.07s ease-out both;
+                    }
+
+                    .brand h1 {
+                              font-size: clamp(1.85rem, 7vw, 2.7rem);
+                              font-weight: 800;
+                              letter-spacing: -0.04em;
+                              color: #fff;
+                              line-height: 1.1;
+                    }
+
+                    .brand h1 span {
+                              color: var(--accent);
+                    }
+
+                    .brand-sub {
+                              margin-top: 0.4rem;
+                              font-size: 0.73rem;
+                              font-weight: 500;
+                              color: var(--muted);
+                              letter-spacing: 0.05em;
+                              text-transform: uppercase;
+                    }
+
+                    /* ── Description ── */
+                    .desc {
+                              font-size: 0.875rem;
+                              color: var(--muted);
+                              line-height: 1.85;
+                              animation: rise 0.4s 0.14s ease-out both;
+                    }
+
+                    .desc strong {
+                              color: var(--text);
+                              font-weight: 500;
+                    }
+
+                    /* ── Rule ── */
+                    .rule {
+                              height: 1px;
+                              background: var(--border);
+                              border: none;
+                              animation: rise 0.4s 0.18s ease-out both;
+                    }
+
+                    /* ── Features ── */
+                    .features {
+                              animation: rise 0.4s 0.22s ease-out both;
+                    }
+
+                    .feat-grid {
+                              display: flex;
+                              flex-wrap: wrap;
+                              gap: 0.4rem;
+                    }
+
+                    .feat {
+                              display: inline-flex;
+                              align-items: center;
+                              gap: 0.38rem;
+                              padding: 0.3rem 0.7rem;
+                              border: 1px solid var(--border);
+                              border-radius: 4px;
+                              font-size: 0.71rem;
+                              font-weight: 500;
+                              color: var(--muted);
+                              background: var(--surface);
+                              white-space: nowrap;
+                              user-select: none;
+                    }
+
+                    .feat i {
+                              font-size: 0.73rem;
+                              color: var(--accent);
+                    }
+
+                    /* ── Partners ── */
+                    .partners {
+                              animation: rise 0.4s 0.28s ease-out both;
+                    }
+
+                    .chip-row {
+                              display: flex;
+                              flex-wrap: wrap;
+                              gap: 0.4rem;
+                    }
+
+                    .chip {
+                              display: inline-flex;
+                              align-items: center;
+                              gap: 0.42rem;
+                              padding: 0.3rem 0.7rem;
+                              border: 1px solid var(--border);
+                              border-radius: 4px;
+                              font-size: 0.71rem;
+                              font-weight: 500;
+                              color: var(--muted);
+                              background: var(--surface);
+                              white-space: nowrap;
+                              user-select: none;
+                    }
+
+                    .chip i {
+                              font-size: 0.8rem;
+                    }
+
+                    .ic-aws {
+                              color: #ff9900;
+                    }
+
+                    .ic-oracle {
+                              color: #f04040;
+                    }
+
+                    .ic-gemini {
+                              color: #4285f4;
+                    }
+
+                    .ic-anthropic {
+                              color: #d4894a;
+                    }
+
+                    /* ── Stack ── */
+                    .stack {
+                              animation: rise 0.4s 0.34s ease-out both;
+                    }
+
+                    .stack-row {
+                              display: flex;
+                              border: 1px solid var(--border);
+                              border-radius: 6px;
+                              overflow: hidden;
+                    }
+
+                    .stack-cell {
+                              flex: 1;
+                              display: flex;
+                              flex-direction: column;
+                              gap: 0.22rem;
+                              padding: 0.65rem 0.85rem;
+                              background: var(--surface);
+                              border-right: 1px solid var(--border);
+                    }
+
+                    .stack-cell:last-child {
+                              border-right: none;
+                    }
+
+                    .stack-key {
+                              display: flex;
+                              align-items: center;
+                              gap: 0.28rem;
+                              font-size: 0.6rem;
+                              font-weight: 600;
+                              letter-spacing: 0.07em;
+                              text-transform: uppercase;
+                              color: var(--muted);
+                    }
+
+                    .stack-key i {
+                              font-size: 0.65rem;
+                    }
+
+                    .stack-val {
+                              font-size: 0.77rem;
+                              font-weight: 600;
+                              color: var(--text);
+                    }
+
+                    /* ── Creator ── */
+                    .creator {
+                              display: flex;
+                              align-items: center;
+                              gap: 0.55rem;
+                              padding: 0.6rem 0.85rem;
+                              border: 1px solid var(--border);
+                              border-radius: 6px;
+                              background: var(--surface);
+                              animation: rise 0.4s 0.4s ease-out both;
+                    }
+
+                    .creator i {
+                              font-size: 1rem;
+                              color: var(--accent);
+                              flex-shrink: 0;
+                    }
+
+                    .creator-txt {
+                              font-size: 0.78rem;
+                              color: var(--muted);
+                              line-height: 1.4;
+                    }
+
+                    .creator-txt strong {
+                              color: var(--text);
+                              font-weight: 700;
+                    }
+
+                    /* ── Footer ── */
+                    .foot {
+                              font-size: 0.66rem;
+                              color: var(--muted);
+                              letter-spacing: 0.03em;
+                              animation: rise 0.4s 0.46s ease-out both;
+                    }
+
+                    /* ── Rise animation ── */
+                    @keyframes rise {
+                              from {
+                                        opacity: 0;
+                                        transform: translateY(10px);
+                              }
+
+                              to {
+                                        opacity: 1;
+                                        transform: translateY(0);
+                              }
+                    }
+
+                    /* ── Mobile ≤ 480px ── */
+                    @media (max-width: 480px) {
+                              body {
+                                        padding: 2rem 1rem;
+                                        align-items: flex-start;
+                              }
+
+                              .page {
+                                        gap: 1.35rem;
+                              }
+
+                              .brand h1 {
+                                        letter-spacing: -0.03em;
+                              }
+
+                              .desc {
+                                        font-size: 0.845rem;
+                              }
+
+                              /* Stack wraps to 2+1 on narrow screens */
+                              .stack-row {
+                                        flex-wrap: wrap;
+                              }
+
+                              .stack-cell {
+                                        flex: 1 1 45%;
+                              }
+
+                              .stack-cell:nth-child(2) {
+                                        border-right: none;
+                              }
+
+                              .stack-cell:nth-child(3) {
+                                        flex: 1 1 100%;
+                                        border-top: 1px solid var(--border);
+                                        border-right: none;
+                              }
+                    }
+
+                    /* ── Very small ≤ 360px ── */
+                    @media (max-width: 360px) {
+                              body {
+                                        padding: 1.75rem 0.875rem;
+                              }
+
+                              .feat,
+                              .chip {
+                                        font-size: 0.67rem;
+                                        padding: 0.26rem 0.6rem;
+                              }
+                    }
+          </style>
+</head>
+
+<body>
+
+          <main class="page">
+
+                    <!-- Status -->
+                    <div class="status">
+                              <span class="status-dot"></span>
+                              Under Active Development
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="brand">
+                              <h1><span>StockFlow</span> ERP</h1>
+                              <p class="brand-sub">Multi-Branch Inventory &amp; Automation System</p>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="desc">
+                              A <strong>Complete Enterprise Resource Planning (ERP) system</strong> for managing inventory across branches —
+                              with purchase &amp; sales workflows, GST-ready invoicing,
+                              and role-based access control. Built for real business scale.
+                    </p>
+
+                    <hr class="rule">
+
+                    <!-- Features -->
+                    <div class="features">
+                              <span class="sec-label">Features</span>
+                              <div class="feat-grid">
+                                        <span class="feat"><i class="bi bi-building"></i>Multi-Branch</span>
+                                        <span class="feat"><i class="bi bi-boxes"></i>Inventory Tracking</span>
+                                        <span class="feat"><i class="bi bi-cart3"></i>Purchase Orders</span>
+                                        <span class="feat"><i class="bi bi-receipt"></i>Sales &amp; Invoicing</span>
+                                        <span class="feat"><i class="bi bi-percent"></i>GST Ready</span>
+                                        <span class="feat"><i class="bi bi-shield-lock"></i>Role-Based Access</span>
+                                        <span class="feat"><i class="bi bi-journal-text"></i>Audit Logs</span>
+                                        <span class="feat"><i class="bi bi-bar-chart-line"></i>Reports &amp;
+                                                  Export</span>
+                              </div>
+                    </div>
+
+                    <!-- Partners -->
+                    <div class="partners">
+                              <span class="sec-label">Collaborating With</span>
+                              <div class="chip-row">
+                                        <span class="chip"><i class="bi bi-cloud-fill ic-aws"></i>Amazon Web
+                                                  Services</span>
+                                        <span class="chip"><i class="bi bi-database-fill ic-oracle"></i>Oracle</span>
+                                        <span class="chip"><i class="bi bi-stars ic-gemini"></i>Gemini</span>
+                                        <span class="chip"><i class="bi bi-cpu ic-anthropic"></i>Anthropic</span>
+                              </div>
+                    </div>
+
+                    <!-- Stack -->
+                    <div class="stack">
+                              <span class="sec-label">Tech Stack</span>
+                              <div class="stack-row">
+                                        <div class="stack-cell">
+                                                  <span class="stack-key"><i class="bi bi-server"></i>Backend</span>
+                                                  <span class="stack-val">PHP 8 &amp; MySQL</span>
+                                        </div>
+                                        <div class="stack-cell">
+                                                  <span class="stack-key"><i class="bi bi-activity"></i>Status</span>
+                                                  <span class="stack-val">In Progress</span>
+                                        </div>
+                                        <div class="stack-cell">
+                                                  <span class="stack-key"><i class="bi bi-rocket"></i>Launch</span>
+                                                  <span class="stack-val">Very Soon</span>
+                                        </div>
+                              </div>
+                    </div>
+
+                    <!-- Creator -->
+                    <div class="creator">
+                              <i class="bi bi-code-slash"></i>
+                              <div class="creator-txt">
+                                        Created by <strong>Mayank Thakkar</strong>
+                              </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <p class="foot">StockFlow ERP &nbsp;·&nbsp; All rights reserved</p>
+
+          </main>
+
+</body>
+
+</html>
